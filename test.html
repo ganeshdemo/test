@@ -1,0 +1,194 @@
+<app-breadcrumb [heading]="'AWS Service Configuration'"></app-breadcrumb>
+
+<div class="container-fluid mt-3">
+
+<div class="row mb-4">
+	 <div class="col-md-12">
+        <div class="card-body cust-tab">
+             
+            <div class="trans-dtl-wrap">
+              
+             
+              
+              <tabset class="center-tab" #staticTabs1>
+                <tab heading="On Prem">
+                  
+                    <div class="row">
+ 
+                        <div class="col-xl-12">
+                            <div class="card card-custom card-stretch gutter-b">
+                                <div class="card-header mt-3">
+                                    <div class="card-title">
+                                        <h3 class="card-label ml-1">On Prem Services List</h3>
+                                    </div>
+                                    
+                             
+                                    <div class="card-toolbar" > 
+                                         
+                                      
+                 
+                                    </div>
+                                </div>
+                      
+                                <div class="card-body cust-data-tbl">
+                      
+                      
+                      
+                                    <ngx-datatable
+                                    [ngClass]="billingData.length>0 ? 'material expandable table-bordered' : 'material expandable table-bordered cust-nodata'"
+                                    [rows]="billingData"
+                                    [columnMode]="'force'"
+                                    [headerHeight]="'auto'"
+                                    [footerHeight]="40"
+                                    [rowHeight]="'auto'"
+                                   
+                                    [scrollbarH]="'true'"  
+                                    [limit]="10" 
+                                    [count]="10"   
+                                    [sorts]="[{ prop: 'name', dir: 'desc' }]"
+                                    (sort)="onSort()"                              
+                                    #table
+                                  >
+                                    <ngx-datatable-column name="Service Name" width="150"  sortable="true" [resizeable]="false" [canAutoResize]="true" prop="invoice">
+                                      <ng-template let-row="row" ngx-datatable-cell-template>
+                                        {{ row.serviceName }}
+                                     
+                                      </ng-template>
+                                    </ngx-datatable-column>
+                                    <ngx-datatable-column name="URL" width="200" sortable="true" [resizeable]="false" [canAutoResize]="true" prop="Bill_Date">
+                                      <ng-template let-row="row" ngx-datatable-cell-template>
+                                         
+                                        <div class="float-icons">
+                                          <!--  -->
+                                          <input disabled="disabled" aria-label="Url" name="UrlAction" type="text" class="form-control"
+                                              placeholder="Url" value=" {{row.url}}" >
+                                          <div class="icon-end">
+                  
+                                              <a routerLink="#" aria-label=" " class="btn btn-icon btn-light-primary btn-sm mr-2"><i
+                                                      class="fa fa-pencil"></i></a>                                  
+                                             
+                                          </div>                   
+                                         
+                                      </div>               
+                                      </ng-template>
+                                    </ngx-datatable-column>
+                
+                                    <ngx-datatable-column headerClass="text-center" name="Access" width="300" sortable="true" [resizeable]="false" [canAutoResize]="true" prop="Bill_Date">
+                                        <ng-template let-row="row" ngx-datatable-cell-template>
+                                          <span class="d-block text-center"> 
+                                            {{ row.access }}
+                                            <!-- <a title="Edit" class="btn btn-icon btn-light-primary btn-sm mr-2"  ><i class="fa fa-edit"></i></a>    
+                                            <a title="Delete" class="btn btn-icon btn-light-danger btn-sm"     
+                                                ><i class="fa fa-trash"></i></a>     -->
+                                        </span>                
+                                        </ng-template>
+                                      </ngx-datatable-column>
+                          
+                                      
+                                  </ngx-datatable>
+                                        
+                                    </div>
+                            </div>
+                        </div>
+                      
+                      </div>
+                
+                </tab>
+                <tab heading="AWS">
+                  <div class="row">
+ 
+                    <div class="col-xl-12">
+                        <div class="card card-custom card-stretch gutter-b">
+                            <div class="card-header mt-3">
+                                <div class="card-title">
+                                    <h3 class="card-label ml-1">AWS Services List</h3>
+                                </div>
+                                
+                         
+                                <div class="card-toolbar" > 
+                                     
+                                  
+             
+                                </div>
+                            </div>
+                  
+                            <div class="card-body cust-data-tbl">
+                  
+                  
+                  
+                              <ngx-datatable
+                              [ngClass]="billingData.length>0 ? 'material expandable table-bordered' : 'material expandable table-bordered cust-nodata'"
+                              [rows]="billingData"
+                              [columnMode]="'force'"
+                              [headerHeight]="'auto'"
+                              [footerHeight]="40"
+                              [rowHeight]="'auto'"
+                             
+                              [scrollbarH]="'true'"  
+                              [limit]="10" 
+                              [count]="10"   
+                              [sorts]="[{ prop: 'name', dir: 'desc' }]"
+                              (sort)="onSort()"                              
+                              #table
+                            >
+                              <ngx-datatable-column name="Service Name" width="150"  sortable="true" [resizeable]="false" [canAutoResize]="true" prop="invoice">
+                                <ng-template let-row="row" ngx-datatable-cell-template>
+                                  {{ row.serviceName }}
+                               
+                                </ng-template>
+                              </ngx-datatable-column>
+                              <ngx-datatable-column name="URL" width="200" sortable="true" [resizeable]="false" [canAutoResize]="true" prop="Bill_Date">
+                                <ng-template let-row="row" ngx-datatable-cell-template>
+                                  <div class="float-icons">
+                                    <!--  -->
+                                    <input disabled="disabled" aria-label="Url" name="UrlAction" type="text" class="form-control"
+                                        placeholder="Url"  >
+                                    <div class="icon-end">
+            
+                                        <a routerLink="#" aria-label=" " class="btn btn-icon btn-light-primary btn-sm mr-2"><i
+                                                class="fa fa-pencil"></i></a>                                  
+                                       
+                                    </div>                   
+                                   
+                                </div>               
+                                </ng-template>
+                              </ngx-datatable-column>
+          
+                              <ngx-datatable-column headerClass="text-center" name="Access" width="300" sortable="true" [resizeable]="false" [canAutoResize]="true" prop="Bill_Date">
+                                  <ng-template let-row="row" ngx-datatable-cell-template>
+                                    <span class="d-block text-center">   
+                                      {{ row.access }}
+                                      <!-- <a title="Edit" class="btn btn-icon btn-light-primary btn-sm mr-2"  ><i class="fa fa-edit"></i></a>    
+                                      <a title="Delete" class="btn btn-icon btn-light-danger btn-sm"     
+                                          ><i class="fa fa-trash"></i></a>     -->
+                                  </span>                
+                                  </ng-template>
+                                </ngx-datatable-column>
+                    
+                                
+                            </ngx-datatable>
+                                    
+                                </div>
+                        </div>
+                    </div>
+                  
+                  </div>
+                </tab>
+                
+              </tabset>
+            </div>
+
+          </div>
+     </div>
+
+	   
+	
+	
+  </div>
+  </div>
+
+
+
+ 
+
+ 
