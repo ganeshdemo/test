@@ -1,0 +1,13 @@
+[{
+	"symbolicName": "ContractNumber",
+	"validateAs": "NoThrees",
+	"maxLength": 8,
+	"required": true,
+	"hasDependentProperties": true
+},
+{
+	"symbolicName": "ContractTitle",
+	"dependentOn": "ContractNumber",
+	"dependentValue": ""
+}
+]
